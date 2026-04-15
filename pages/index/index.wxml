@@ -1,0 +1,97 @@
+<view class="container">
+  <!-- 顶部区域 -->
+  <view class="header">
+    <text class="title">✨ AI 命理</text>
+    <text class="subtitle">探索你的命定之人</text>
+  </view>
+
+  <!-- 玄学类型选择 -->
+  <view class="section-title">选择测算方式</view>
+  <view class="type-cards">
+    <view 
+      class="type-card {{selectedType === 'bazi' ? 'active' : ''}}" 
+      bindtap="selectType" 
+      data-type="bazi">
+      <text class="type-icon">📅</text>
+      <text class="type-name">八字命理</text>
+      <text class="type-desc">东方传统智慧</text>
+    </view>
+    <view 
+      class="type-card {{selectedType === 'xingpan' ? 'active' : ''}}" 
+      bindtap="selectType" 
+      data-type="xingpan">
+      <text class="type-icon">⭐</text>
+      <text class="type-name">星盘解读</text>
+      <text class="type-desc">西方星座奥秘</text>
+    </view>
+    <view 
+      class="type-card {{selectedType === 'tuoluo' ? 'active' : ''}}" 
+      bindtap="selectType" 
+      data-type="tuoluo">
+      <text class="type-icon">🔮</text>
+      <text class="type-name">塔罗占卜</text>
+      <text class="type-desc">神秘指引</text>
+    </view>
+  </view>
+
+  <!-- 个人信息输入 -->
+  <view class="section-title">填写信息</view>
+  <view class="form">
+    <view class="form-item">
+      <text class="form-label">出生日期</text>
+      <picker mode="date" value="{{birthDate}}" bindchange="onBirthDateChange">
+        <view class="picker">
+          {{birthDate || '请选择日期'}}
+        </view>
+      </picker>
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">出生时辰</text>
+      <picker mode="selector" value="{{birthHour}}" range="{{hours}}" bindchange="onBirthHourChange">
+        <view class="picker">
+          {{birthHour !== '' ? hours[birthHour] : '请选择时辰'}}
+        </view>
+      </picker>
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">性别</text>
+      <view class="gender-select">
+        <view 
+          class="gender-btn {{gender === 'female' ? 'active' : ''}}" 
+          bindtap="selectGender" 
+          data-gender="female">
+          💃 女
+        </view>
+        <view 
+          class="gender-btn {{gender === 'male' ? 'active' : ''}}" 
+          bindtap="selectGender" 
+          data-gender="male">
+          🧑 男
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 剩余次数提示 -->
+  <view class="free-tips" wx:if="{{freeUsesLeft > 0}}">
+    🎁 今日剩余 {{freeUsesLeft}} 次免费机会
+  </view>
+  <view class="free-tips no-tips" wx:else>
+    今日免费次数已用完，请观看视频获取更多机会
+  </view>
+
+  <!-- 开始按钮 -->
+  <button 
+    class="start-btn {{canStart ? '' : 'disabled'}}" 
+    bindtap="startAnalysis"
+    disabled="{{!canStart}}">
+    🔮 开始分析
+  </button>
+
+  <!-- 免责声明 -->
+  <view class="disclaimer">
+    本结果仅供娱乐参考，请理性看待
+  </view>
+</view>

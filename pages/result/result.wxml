@@ -1,0 +1,110 @@
+<view class="container">
+  <!-- 顶部标题 -->
+  <view class="header">
+    <text class="title">{{result.title}}</text>
+    <text class="subtitle">✨ AI 命理为你解读 ✨</text>
+  </view>
+
+  <!-- 性格卡牌 -->
+  <view class="card personality-card">
+    <view class="card-header">
+      <text class="card-icon">🌟</text>
+      <text class="card-title">性格特点</text>
+    </view>
+    <view class="card-tags">
+      <text 
+        wx:for="{{result.personality.tags}}" 
+        wx:key="index" 
+        class="tag">{{item}}</text>
+    </view>
+    <view class="card-content">
+      <text class="desc-text">{{result.personality.description}}</text>
+    </view>
+  </view>
+
+  <!-- 爱情观卡牌 -->
+  <view class="card love-card">
+    <view class="card-header">
+      <text class="card-icon">💕</text>
+      <text class="card-title">爱情观解读</text>
+    </view>
+    <view class="love-section">
+      <view class="love-item">
+        <text class="love-label">✨ 优势</text>
+        <text class="love-text">{{result.loveStyle.strength}}</text>
+      </view>
+      <view class="love-item">
+        <text class="love-label">💭 盲点</text>
+        <text class="love-text">{{result.loveStyle.weakness}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 理想伴侣卡牌 -->
+  <view class="card partner-card">
+    <view class="card-header">
+      <text class="card-icon">💝</text>
+      <text class="card-title">理想伴侣</text>
+    </view>
+    <view class="partner-section">
+      <view class="partner-item">
+        <text class="partner-label">外貌</text>
+        <text class="partner-text">{{result.idealPartner.appearance}}</text>
+      </view>
+      <view class="partner-item">
+        <text class="partner-label">性格</text>
+        <text class="partner-text">{{result.idealPartner.personality}}</text>
+      </view>
+      <view class="partner-item">
+        <text class="partner-label">相遇</text>
+        <text class="partner-text">{{result.idealPartner.scenario}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 正缘时机卡牌 -->
+  <view class="card timing-card">
+    <view class="card-header">
+      <text class="card-icon">⏰</text>
+      <text class="card-title">正缘时机</text>
+    </view>
+    <view class="timing-content">
+      <text class="timing-main">{{result.timing.when}}</text>
+      <view class="signs-list">
+        <text wx:for="{{result.timing.signs}}" wx:key="index" class="sign-item">• {{item}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 爱情建议 -->
+  <view class="card advice-card">
+    <view class="card-header">
+      <text class="card-icon">📝</text>
+      <text class="card-title">爱情建议</text>
+    </view>
+    <view class="advice-list">
+      <view wx:for="{{result.advice}}" wx:key="index" class="advice-item">
+        <text class="advice-num">{{index + 1}}</text>
+        <text class="advice-text">{{item}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 操作按钮 -->
+  <view class="actions">
+    <button class="action-btn share-btn" bindtap="onShare">
+      📤 分享给好友
+    </button>
+    <button class="action-btn again-btn" bindtap="onAgain">
+      🔮 再算一次
+    </button>
+    <button class="action-btn ad-btn" bindtap="watchAd">
+      📺 看视频获取次数
+    </button>
+  </view>
+
+  <!-- 免责声明 -->
+  <view class="disclaimer">
+    本结果仅供娱乐参考，请理性看待
+  </view>
+</view>

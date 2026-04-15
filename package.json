@@ -1,0 +1,25 @@
+{
+  "name": "ai-fortune-miniapp",
+  "version": "1.0.0",
+  "description": "AI玄学+灵魂伴侣小程序",
+  "main": "index.js",
+  "scripts": {
+    "dev:mp-weixin": "uni -p mp-weixin",
+    "build:mp-weixin": "uni build -p mp-weixin"
+  },
+  "keywords": ["uni-app", "wechat", "mini-program", "ai", "fortune"],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yuma-st/ai-fortune-miniapp.git"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@dcloudio/uni-cli": "^3.0.0",
+    "@dcloudio/uni小程序": "^3.0.0",
+    "@dcloudio/uni-mp-weixin": "^3.0.0",
+    "typescript": "^5.0.0",
+    "vite": "^5.0.0"
+  }
+}
